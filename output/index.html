@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sunray Demo 可视化 · 无人机 / 无人车</title>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --panel: #1a2332;
+      --text: #e7ecf3;
+      --muted: #9aa7b8;
+      --accent: #3d8bfd;
+      --car: #3dd68c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: radial-gradient(1200px 600px at 20% -10%, #1b2a44, var(--bg));
+      color: var(--text);
+      min-height: 100vh;
+    }
+    header {
+      padding: 28px 24px 8px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    header h1 { margin: 0 0 8px; font-size: 1.6rem; }
+    header p { margin: 0; color: var(--muted); line-height: 1.5; }
+    .grid {
+      max-width: 1100px;
+      margin: 20px auto 40px;
+      padding: 0 16px;
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid #2a3648;
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .card h2 {
+      margin: 0 0 6px;
+      font-size: 1.15rem;
+    }
+    .card .tag {
+      display: inline-block;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+    .uav .tag { background: rgba(61,139,253,.2); color: var(--accent); }
+    .ugv .tag { background: rgba(61,214,140,.2); color: var(--car); }
+    .card p { color: var(--muted); font-size: 0.92rem; margin: 0 0 12px; }
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      background: #0b1018;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .links a {
+      color: var(--accent);
+      margin-right: 12px;
+      font-size: 0.9rem;
+    }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      padding-bottom: 28px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sunray 任务 Demo 可视化</h1>
+    <p>对齐云纵官方例程：无人机 <code>takeoff_hover_land.py</code> · 无人车 <code>ugv_circle_vel.py</code><br/>
+       左/上为动画 GIF，静态 PNG 可点链接打开。刷新页面前请先重新跑对应 demo。</p>
+  </header>
+  <div class="grid">
+    <section class="card uav">
+      <span class="tag">无人机 UAV</span>
+      <h2>起飞 → 悬停 → 降落</h2>
+      <p>阶段：WAIT → CMD_CONTROL → ARM → TAKEOFF → HOVER → LAND</p>
+      <img src="uav_takeoff_hover_land.gif" alt="UAV gif" />
+      <img src="uav_takeoff_hover_land.png" alt="UAV plot" />
+      <div class="links">
+        <a href="uav_takeoff_hover_land.gif" target="_blank">打开 GIF</a>
+        <a href="uav_takeoff_hover_land.png" target="_blank">打开 PNG</a>
+        <a href="uav_takeoff_hover_land.csv" target="_blank">轨迹 CSV</a>
+      </div>
+    </section>
+    <section class="card ugv">
+      <span class="tag">无人车 UGV</span>
+      <h2>就位 → 绕圆 → 回原点</h2>
+      <p>阶段：MOVE_TO_CIRCLE → CIRCLE → RETURN_ORIGIN → HOLD</p>
+      <img src="ugv_circle.gif" alt="UGV gif" />
+      <img src="ugv_circle.png" alt="UGV plot" />
+      <div class="links">
+        <a href="ugv_circle.gif" target="_blank">打开 GIF</a>
+        <a href="ugv_circle.png" target="_blank">打开 PNG</a>
+        <a href="ugv_circle.csv" target="_blank">轨迹 CSV</a>
+      </div>
+    </section>
+  </div>
+  <footer>sunray-leader-demo · 逻辑仿真可视化（非 Gazebo 实机画面）</footer>
+</body>
+</html>
