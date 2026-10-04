@@ -1,0 +1,69 @@
+<launch>
+  <!-- PX4 SITL + delayed iris spawn (posix default spawn races Gazebo and dies). -->
+  <arg name="gui" default="false"/>
+  <arg name="rviz" default="true"/>
+  <arg name="mission_file" default="$(find sunray_mission)/config/mission.yaml"/>
+  <arg name="uav_id" default="1"/>
+  <arg name="uav_name" default="uav"/>
+  <arg name="Takeoff_height" default="1.2"/>
+
+  <env name="PX4_SIM_MODEL" value="gazebo-classic_iris"/>
+
+  <node name="sitl" pkg="px4" type="px4" output="screen" required="false"
+        args="$(find px4)/build/px4_sitl_default/etc -s etc/init.d-posix/rcS -d"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="world_name" value="$(find mavlink_sitl_gazebo)/worlds/empty.world"/>
+    <arg name="debug" value="false"/>
+    <arg name="verbose" value="false"/>
+    <arg name="paused" value="false"/>
+    <arg name="respawn_gazebo" value="false"/>
+  </include>
+
+  <!-- Wait for Gazebo plugins before inserting the aircraft. -->
+  <node name="iris_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+        launch-prefix="bash -c 'sleep 12; exec $0 $@'"
+        args="-sdf -file $(find mavlink_sitl_gazebo)/models/iris/iris.sdf -model iris -x 0 -y 0 -z 0.15"/>
+
+  <include file="$(find sunray_mission)/launch/sitl_mavros.launch">
+    <arg name="uav_id" value="$(arg uav_id)"/>
+    <arg name="uav_name" value="$(arg uav_name)"/>
+  </include>
+
+  <include file="$(find sunray_uav_control)/launch/external_fusion.launch">
+    <arg name="uav_id" value="$(arg uav_id)"/>
+    <arg name="uav_name" value="$(arg uav_name)"/>
+    <arg name="external_source" value="0"/>
+    <arg name="position_topic" value="/uav1/sunray/gazebo_odom"/>
+    <arg name="enable_rviz" value="false"/>
+  </include>
+
+  <include file="$(find sunray_uav_control)/launch/sunray_control_node.launch">
+    <arg name="uav_id" value="$(arg uav_id)"/>
+    <arg name="uav_name" value="$(arg uav_name)"/>
+    <arg name="Takeoff_height" value="$(arg Takeoff_height)"/>
+    <arg name="land_type" value="0"/>
+    <arg name="Land_speed" value="0.25"/>
+    <arg name="use_rc_control" value="false"/>
+    <arg name="x_min" value="-4.0"/>
+    <arg name="x_max" value="4.0"/>
+    <arg name="y_min" value="-4.0"/>
+    <arg name="y_max" value="4.0"/>
+    <arg name="z_min" value="-2.0"/>
+    <arg name="z_max" value="5.0"/>
+  </include>
+
+  <node pkg="sunray_mission" type="gazebo_vision_bridge.py" name="gazebo_vision_bridge" output="screen"/>
+  <node pkg="sunray_mission" type="set_ekf_vision.py" name="set_ekf_vision" output="screen"
+        launch-prefix="bash -c 'sleep 20; exec $0 $@'"/>
+
+  <node pkg="sunray_mission" type="mission_node.py" name="mission_node" output="screen">
+    <rosparam file="$(arg mission_file)" command="load"/>
+    <param name="takeoff_height" value="$(arg Takeoff_height)"/>
+  </node>
+
+  <node if="$(arg rviz)" pkg="rviz" type="rviz" name="rviz"
+        launch-prefix="bash -c 'sleep 6; exec $0 $@'"
+        args="-d $(find sunray_mission)/rviz/mission.rviz"/>
+</launch>

@@ -1,0 +1,20 @@
+uav_id: 1
+uav_name: uav
+takeoff_height: 1.2
+arrive_thresh: 0.25
+waypoint_timeout: 25.0
+loop_hz: 20.0
+log_csv: /root/autodl-tmp/sunray_mission_fence.csv
+
+geofence:
+  xmin: -0.6
+  xmax: 0.6
+  ymin: -0.6
+  ymax: 0.6
+  zmin: -0.1
+  zmax: 3.0
+
+end_action: land
+
+waypoints:
+  - {x: 2.0, y: 0.0, z: 1.2, wait: 1.0}

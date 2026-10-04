@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>sunray_mission</name>
+  <version>0.1.0</version>
+  <description>Simulation waypoint mission with geofence and fail-safe land.</description>
+  <maintainer email="dev@example.com">sunray-mission</maintainer>
+  <license>MIT</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>visualization_msgs</depend>
+  <depend>sunray_msgs</depend>
+</package>
