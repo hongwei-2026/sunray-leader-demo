@@ -98,19 +98,19 @@ class Route:
         return (a[0]+u*(b[0]-a[0]), a[1]+u*(b[1]-a[1]))
 
     def speed_limit(self, progress):
-        # 提前查看 1.2 m 内的曲率，以 v² = v_end² + 2ad 反推可刹停速度。
-        # 只在临近角点时降速太晚，会造成方形角点外冲后再绕回来。
-        limit = .60
-        for k in range(25):
+        # PX4 SITL 跟踪滞后约 0.3–0.4 m；上限与曲率刹停更保守，避免 TASK_GEOMETRY。
+        # 提前查看 1.5 m 内的曲率，以 v² = v_end² + 2ad 反推可刹停速度。
+        limit = .42
+        for k in range(30):
             ahead = .05*k
             future = min(self.length, progress+ahead)
             turn = self._curve_speed(future)
-            limit = min(limit, math.sqrt(turn*turn+2*.30*ahead))
-        return min(limit, max(.04, math.sqrt(2*.30*max(0., self.length-progress))))
+            limit = min(limit, math.sqrt(turn*turn+2*.22*ahead))
+        return min(limit, max(.04, math.sqrt(2*.22*max(0., self.length-progress))))
 
     def _curve_speed(self, progress):
         a, b, c = (self.sample(progress+d) for d in (-.18, 0., .18))
         ab, bc = (b[0]-a[0], b[1]-a[1]), (c[0]-b[0], c[1]-b[1])
         den = max(distance(a, b)*distance(b, c), 1e-9)
         angle = math.acos(max(-1., min(1., (ab[0]*bc[0]+ab[1]*bc[1])/den)))
-        return min(.60, math.sqrt(.22/max(angle/.18, .01)))
+        return min(.42, math.sqrt(.16/max(angle/.18, .01)))

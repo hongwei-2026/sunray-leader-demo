@@ -23,8 +23,8 @@ for line in sys.stdin:
     previous=state['t']
     actual=(state['x'],state['y'])
     error=distance(actual,route.sample(progress))
-    wanted=route.speed_limit(progress)*max(0.,min(1.,(.45-error)/.25))
-    speed+=max(-.5*dt,min(.3*dt,wanted-speed))
+    wanted=route.speed_limit(progress)*max(0.,min(1.,(.35-error)/.22))
+    speed+=max(-.55*dt,min(.22*dt,wanted-speed))
     progress=min(route.length,progress+max(0.,speed)*dt)
     target=route.sample(progress)
     a,b=route.sample(progress-.025),route.sample(progress+.025)
