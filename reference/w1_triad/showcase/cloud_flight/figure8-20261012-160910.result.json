@@ -1,0 +1,11 @@
+{
+  "mode": "figure8",
+  "success": false,
+  "planned_length_m": 19.551408407880782,
+  "flight_duration_s": 41.132439360022545,
+  "landed_disarmed": false,
+  "error": "Landing not confirmed",
+  "emergency_landed": false,
+  "max_tracking_error_m": 0.34147182436635765,
+  "min_cone_center_m": 1.2720282702867278
+}

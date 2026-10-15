@@ -1,0 +1,9 @@
+{
+  "mode": "circles",
+  "success": true,
+  "planned_length_m": 43.57803406625979,
+  "flight_duration_s": 100.0632525421679,
+  "landed_disarmed": true,
+  "max_tracking_error_m": 0.33469165662639316,
+  "min_cone_center_m": 1.0889825026062738
+}

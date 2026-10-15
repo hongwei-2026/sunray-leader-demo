@@ -1,0 +1,16 @@
+CONNECT
+HOME_NED (0.0056690173108577754, -0.022534222521543502, -0.11811885982751846)
+FLY length_m 35.0
+PROGRESS 0 error 0.019 clearance 2.103
+PROGRESS 10 error 0.288 clearance 2.731
+PROGRESS 20 error 0.292 clearance 3.066
+PROGRESS 30 error 0.09 clearance 2.479
+PROGRESS 40 error 0.299 clearance 3.059
+PROGRESS 50 error 0.07 clearance 2.492
+PROGRESS 60 error 0.247 clearance 3.02
+PROGRESS 70 error 0.033 clearance 2.49
+PROGRESS 80 error 0.314 clearance 3.04
+PROGRESS 90 error 0.321 clearance 2.312
+PROGRESS 100 error 0.242 clearance 1.956
+LANDED DISARMED
+{"mode": "square", "success": true, "planned_length_m": 35.0, "flight_duration_s": 75.35226220265031, "landed_disarmed": true, "max_tracking_error_m": 0.33089704436382505, "min_cone_center_m": 1.4870395360405533}

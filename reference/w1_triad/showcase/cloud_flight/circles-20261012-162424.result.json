@@ -1,0 +1,6 @@
+{
+  "mode": "circles",
+  "success": false,
+  "planned_length_m": 43.57803406625979,
+  "error": "Command '['gz', 'model', '-m', 'iris', '-p']' timed out after 3 seconds"
+}

@@ -1,0 +1,6 @@
+{
+  "mode": "circles",
+  "success": false,
+  "planned_length_m": 43.57803406625979,
+  "error": "Home offset exceeds 0.35m; restart SITL at scene origin"
+}
