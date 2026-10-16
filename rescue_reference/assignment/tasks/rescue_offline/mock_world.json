@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "kind": "synthetic_kinematic_fixture",
+  "not_gazebo_geometry": true,
+  "dt_s": 0.2,
+  "body_clearance_m": 0.8,
+  "ground_z": 0,
+  "bounds": [
+    -155,
+    155,
+    -155,
+    155
+  ],
+  "obstacles": [
+    {
+      "id": "valley_wall",
+      "min": [
+        -65,
+        -60,
+        0
+      ],
+      "max": [
+        -59,
+        -22,
+        35
+      ]
+    },
+    {
+      "id": "bridge_remnant",
+      "min": [
+        -28,
+        -8,
+        0
+      ],
+      "max": [
+        -10,
+        8,
+        18
+      ]
+    },
+    {
+      "id": "landslide_conservative_box",
+      "min": [
+        22,
+        4,
+        0
+      ],
+      "max": [
+        45,
+        30,
+        38
+      ]
+    },
+    {
+      "id": "village_wall",
+      "min": [
+        65,
+        20,
+        0
+      ],
+      "max": [
+        69,
+        65,
+        29
+      ]
+    }
+  ],
+  "note": "仅验证抽象规划与任务逻辑，地形/建筑采用人工测试障碍；不是原Gazebo网格，也没有空气动力学、电池或载荷动力学。滑坡用包围盒保守近似。"
+}

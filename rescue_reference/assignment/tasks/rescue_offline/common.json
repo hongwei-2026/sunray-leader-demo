@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "world": "mountain_rescue",
+  "scene_release": "2026.10.12-v1",
+  "frame": "world ENU",
+  "units": {
+    "position": "m",
+    "velocity": "m/s",
+    "time": "simulation seconds"
+  },
+  "mode": "cpu_known_map_logical_delivery",
+  "drone_envelope_m": [
+    1.0,
+    1.0,
+    0.35
+  ],
+  "clearance_sphere_radius_m": 0.8,
+  "geofence_xy_m": [
+    -155,
+    155,
+    -155,
+    155
+  ],
+  "station": {
+    "takeoff_pad": [
+      -113,
+      -95,
+      8.2
+    ],
+    "return_pad": [
+      -101,
+      -95,
+      8.2
+    ],
+    "pad_radius_m": 3.0,
+    "spawn_reference": [
+      -113,
+      -95,
+      8.7
+    ],
+    "landing_xy_tolerance_m": 1.0,
+    "landing_speed_max_mps": 0.15,
+    "landing_stable_s": 5,
+    "landing_condition": "机体接地点接触坪面；不得把机体中心 z=8.2 当作着陆"
+  },
+  "no_entry": [
+    {
+      "name": "landslide_active",
+      "polygon": [
+        [
+          22,
+          4
+        ],
+        [
+          41,
+          4
+        ],
+        [
+          45,
+          28
+        ],
+        [
+          27,
+          30
+        ]
+      ],
+      "z_range": [
+        0,
+        38
+      ]
+    },
+    {
+      "name": "river_flood",
+      "description": "abs(x-(-18+5*sin(y/37))) < 5, z < 3"
+    }
+  ],
+  "medical_pack_mass_kg": 0.25,
+  "delivery": {
+    "type": "logical_only",
+    "hover_height_above_pad_m": 1.0,
+    "vertical_tolerance_m": 0.3,
+    "speed_max_mps": 0.25,
+    "require_observe_before_delivery": true,
+    "one_pack_per_target": true,
+    "duplicate_credit": false,
+    "release_rejected_consumes_pack": false,
+    "accepted_release_consumes_pack": true,
+    "physical_payload_simulated": false
+  },
+  "observation": {
+    "mode": "known_target_proximity_confirmation",
+    "stable_s": 3,
+    "near_active_drop_center_3d_m": 3,
+    "speed_max_mps": 0.5,
+    "note": "CPU教学抽象：坐标接近核验，不声称视觉识别。需人工复核遮挡与安全。"
+  },
+  "safety": {
+    "apply_all_levels": true,
+    "speed_grace_s": 1,
+    "geofence_clearance_applies": true,
+    "hard_fail": [
+      "碰撞非指定起降面",
+      "进入禁入区域",
+      "净空包络越过外边界或高度上限",
+      "坠毁或越权重置仿真"
+    ],
+    "return_reserve_airborne_s": 45
+  },
+  "log_contract": {
+    "telemetry_min_hz": 10,
+    "frame": "world ENU",
+    "telemetry_fields": [
+      "t_sim_s",
+      "x",
+      "y",
+      "z",
+      "vx",
+      "vy",
+      "vz",
+      "landed",
+      "payload_remaining",
+      "airborne_since_refill_s"
+    ],
+    "event_fields": [
+      "t_sim_s",
+      "event",
+      "target_id",
+      "pad",
+      "accepted",
+      "reason"
+    ],
+    "events": [
+      "start",
+      "observe",
+      "delivery_request",
+      "delivery_accepted",
+      "delivery_rejected",
+      "land",
+      "refill_begin",
+      "refill_complete",
+      "finish",
+      "abort"
+    ],
+    "trust": "学生事件为申请/自报，须教师结合仿真原始记录复核；本包不是防作弊裁判"
+  },
+  "score": {
+    "completion": 60,
+    "safe_return": 20,
+    "operational_discipline": 10,
+    "efficiency": 10,
+    "efficiency_formula": "10 * max(0, 1 - elapsed_s / time_limit_s)，仅全目标完成并安全返航时计入",
+    "pass_requires": [
+      "全部必需目标有效投送",
+      "在总时限内返航停稳",
+      "无安全硬失败",
+      "score >= 75"
+    ],
+    "incomplete_score_cap": 59
+  },
+  "scope": {
+    "sensor_rendering": false,
+    "student_algorithm_included": false,
+    "automatic_judge": false,
+    "vehicle_spawned": false
+  }
+}

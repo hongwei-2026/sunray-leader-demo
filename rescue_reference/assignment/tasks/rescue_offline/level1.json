@@ -1,0 +1,43 @@
+{
+  "id": "level1",
+  "name": "一包药的往返",
+  "difficulty": "基础",
+  "objectives": [
+    "确认T01",
+    "向T01主投送区交付一包物资",
+    "安全返航停稳"
+  ],
+  "target_ids": [
+    "T01"
+  ],
+  "available_from_start": [
+    "T01"
+  ],
+  "delivery_points_each": {
+    "T01": 60
+  },
+  "time_limit_s": 600,
+  "ceiling_world_z_m": 40,
+  "max_speed_mps": 3,
+  "payload_capacity": 1,
+  "initial_payload": 1,
+  "refill_allowed": false,
+  "refill_hold_s": 0,
+  "sortie_airborne_budget_s": 300,
+  "delivery_hover_s": 3,
+  "horizontal_tolerance_cap_m": 1.0,
+  "allowed_pads": {
+    "T01": [
+      "primary"
+    ]
+  },
+  "target_deadline_s": {
+    "T01": 480
+  },
+  "dispatch_events": [],
+  "learning": [
+    "三维坐标转换",
+    "稳定悬停",
+    "状态机与安全返航"
+  ]
+}

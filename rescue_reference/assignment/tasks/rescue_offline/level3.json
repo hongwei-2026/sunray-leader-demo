@@ -1,0 +1,97 @@
+{
+  "id": "level3",
+  "name": "村庄改派与限时救援",
+  "difficulty": "困难",
+  "objectives": [
+    "完成T02/T03/T06/T04/T05五个投送",
+    "响应120秒时的新增院落任务和主点关闭公告",
+    "完成屋顶优先任务并使用T04备选点",
+    "在资源约束下补给与安全返航"
+  ],
+  "target_ids": [
+    "T02",
+    "T03",
+    "T06",
+    "T04",
+    "T05"
+  ],
+  "available_from_start": [
+    "T02",
+    "T03",
+    "T06",
+    "T05"
+  ],
+  "delivery_points_each": {
+    "T02": 8,
+    "T03": 8,
+    "T06": 8,
+    "T04": 16,
+    "T05": 20
+  },
+  "time_limit_s": 1800,
+  "ceiling_world_z_m": 32,
+  "max_speed_mps": 4,
+  "payload_capacity": 2,
+  "initial_payload": 2,
+  "refill_allowed": true,
+  "refill_hold_s": 25,
+  "sortie_airborne_budget_s": 480,
+  "delivery_hover_s": 5,
+  "horizontal_tolerance_cap_m": 0.5,
+  "allowed_pads": {
+    "T02": [
+      "primary",
+      "alternate"
+    ],
+    "T03": [
+      "primary",
+      "alternate"
+    ],
+    "T06": [
+      "primary",
+      "alternate"
+    ],
+    "T04": [
+      "alternate"
+    ],
+    "T05": [
+      "primary"
+    ]
+  },
+  "target_deadline_s": {
+    "T02": 1650,
+    "T03": 1650,
+    "T06": 1650,
+    "T04": 1320,
+    "T05": 900
+  },
+  "priority_labels": {
+    "T05": "P1课堂优先",
+    "T04": "P1课堂优先",
+    "T02": "P2",
+    "T03": "P2",
+    "T06": "P2"
+  },
+  "dispatch_events": [
+    {
+      "at_elapsed_s": 120,
+      "event_id": "courtyard_dispatch",
+      "activate_targets": [
+        "T04"
+      ],
+      "closed_pads": [
+        {
+          "target_id": "T04",
+          "pad": "primary"
+        }
+      ],
+      "message": "院落救援任务生效：T04主接收点不可用，请投送到ALT(58,50,12.12)。"
+    }
+  ],
+  "learning": [
+    "新增任务重调度",
+    "高差与屋顶精确接近",
+    "任务截止时间",
+    "资源约束与恢复"
+  ]
+}

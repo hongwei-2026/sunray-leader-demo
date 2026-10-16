@@ -1,0 +1,164 @@
+[
+  {
+    "id": "T01",
+    "position": [
+      -96,
+      -59,
+      10.12
+    ],
+    "approach_center": [
+      -96,
+      -59,
+      11.12
+    ],
+    "drop_radius_m": 1.5,
+    "approach_height_above_pad_m": 1.0,
+    "difficulty": "basic",
+    "reason": "开阔路侧，练习发现目标和稳定接近",
+    "alternate": [
+      -99,
+      -62,
+      10.12
+    ],
+    "human_position": [
+      -93.35,
+      -59,
+      10.48
+    ]
+  },
+  {
+    "id": "T02",
+    "position": [
+      -74,
+      -38,
+      11.12
+    ],
+    "approach_center": [
+      -74,
+      -38,
+      12.12
+    ],
+    "drop_radius_m": 1.0,
+    "approach_height_above_pad_m": 1.0,
+    "difficulty": "medium",
+    "reason": "谷壁遮挡，需选择观察高度和接近方位",
+    "alternate": [
+      -77,
+      -41,
+      11.12
+    ],
+    "human_position": [
+      -71.35,
+      -38,
+      11.48
+    ]
+  },
+  {
+    "id": "T03",
+    "position": [
+      -36,
+      -8,
+      5.12
+    ],
+    "approach_center": [
+      -36,
+      -8,
+      6.12
+    ],
+    "drop_radius_m": 1.0,
+    "approach_height_above_pad_m": 1.0,
+    "difficulty": "medium",
+    "reason": "断桥西岸，缺口和河道限制低空接近",
+    "alternate": [
+      -39,
+      -11,
+      5.12
+    ],
+    "human_position": [
+      -33.35,
+      -8,
+      5.48
+    ]
+  },
+  {
+    "id": "T04",
+    "position": [
+      49,
+      52,
+      12.12
+    ],
+    "approach_center": [
+      49,
+      52,
+      13.12
+    ],
+    "drop_radius_m": 0.75,
+    "approach_height_above_pad_m": 1.0,
+    "difficulty": "hard",
+    "reason": "院墙与楼房形成遮挡，入口净宽受限",
+    "alternate": [
+      58,
+      50,
+      12.12
+    ],
+    "human_position": [
+      51.65,
+      52,
+      12.48
+    ]
+  },
+  {
+    "id": "T05",
+    "position": [
+      108,
+      38,
+      20.12
+    ],
+    "approach_center": [
+      108,
+      38,
+      21.12
+    ],
+    "drop_radius_m": 0.8,
+    "approach_height_above_pad_m": 1.0,
+    "difficulty": "hard",
+    "reason": "屋顶高差，须检查降落与投送高度",
+    "alternate": [
+      109,
+      28,
+      12.12
+    ],
+    "human_position": [
+      110.65,
+      38,
+      20.48
+    ]
+  },
+  {
+    "id": "T06",
+    "position": [
+      13,
+      -19,
+      10.12
+    ],
+    "approach_center": [
+      13,
+      -19,
+      11.12
+    ],
+    "drop_radius_m": 1.0,
+    "approach_height_above_pad_m": 1.0,
+    "difficulty": "medium",
+    "reason": "滑坡绕行侧，碎石与禁入区限制直接接近",
+    "alternate": [
+      10,
+      -22,
+      10.12
+    ],
+    "human_position": [
+      15.65,
+      -19,
+      10.48
+    ]
+  }
+]
