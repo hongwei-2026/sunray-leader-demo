@@ -35,12 +35,12 @@ for line in sys.stdin:
         continue
     error=distance(actual,route.sample(progress))
     # 横向偏差大时冻结进度并拉回当前目标，防止沿错误方向继续推进。
-    if error>0.28:
-        speed=max(0.,speed-0.8*dt)
+    if error>0.22:
+        speed=max(0.,speed-1.0*dt)
         wanted=0.
     else:
-        wanted=route.speed_limit(progress)*max(0.,min(1.,(.30-error)/.2))
-        speed+=max(-.55*dt,min(.15*dt,wanted-speed))
+        wanted=route.speed_limit(progress)*max(0.,min(1.,(.28-error)/.18))
+        speed+=max(-.6*dt,min(.12*dt,wanted-speed))
         progress=min(route.length,progress+max(0.,speed)*dt)
     target=route.sample(progress)
     a,b=route.sample(progress-.025),route.sample(progress+.025)

@@ -100,17 +100,18 @@ class Route:
     def speed_limit(self, progress):
         # PX4 SITL 跟踪滞后约 0.3–0.4 m；上限与曲率刹停更保守，避免 TASK_GEOMETRY。
         # 提前查看 1.5 m 内的曲率，以 v² = v_end² + 2ad 反推可刹停速度。
-        limit = .36
-        for k in range(30):
+        # 方形直角更易切角超差；整体再降速并提前刹停。
+        limit = .30
+        for k in range(36):
             ahead = .05*k
             future = min(self.length, progress+ahead)
             turn = self._curve_speed(future)
-            limit = min(limit, math.sqrt(turn*turn+2*.18*ahead))
-        return min(limit, max(.04, math.sqrt(2*.18*max(0., self.length-progress))))
+            limit = min(limit, math.sqrt(turn*turn+2*.15*ahead))
+        return min(limit, max(.04, math.sqrt(2*.15*max(0., self.length-progress))))
 
     def _curve_speed(self, progress):
         a, b, c = (self.sample(progress+d) for d in (-.18, 0., .18))
         ab, bc = (b[0]-a[0], b[1]-a[1]), (c[0]-b[0], c[1]-b[1])
         den = max(distance(a, b)*distance(b, c), 1e-9)
         angle = math.acos(max(-1., min(1., (ab[0]*bc[0]+ab[1]*bc[1])/den)))
-        return min(.36, math.sqrt(.14/max(angle/.18, .01)))
+        return min(.30, math.sqrt(.10/max(angle/.18, .01)))
