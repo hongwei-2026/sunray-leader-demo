@@ -98,3 +98,8 @@ sunray-leader-demo/
 ## 跟老师/社长怎么说（可直接复制）
 
 > 我对云纵无人机和智能车感兴趣。民大组织仓里暂时没有对应 repo，我按云纵官方 Sunray 资料先把两条基础业务流做了任务逻辑 demo（起飞悬停降落 + 无人车绕圆），产物在本地 `sunray-leader-demo/output/`。下一步需要：① 社里是否有私有资料/实机预约；② 我这边准备 Ubuntu 20.04 跑官方 `scripts_sim`。想竞 leader 的话我可以继续把仿真/实机 demo 补上。
+
+
+## 山地急救参考算法
+
+新增 [rescue_reference](rescue_reference/README.md)：三维规划、救援调度和15回合离线回归。无需GPU或Gazebo，真实仿真验收待后续开展。参考算法公开发布已获仓库负责人同意。

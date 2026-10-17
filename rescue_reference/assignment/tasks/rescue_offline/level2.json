@@ -1,0 +1,61 @@
+{
+  "id": "level2",
+  "name": "断路后的三点补给",
+  "difficulty": "中等",
+  "objectives": [
+    "完成T02/T03/T06三个投送",
+    "至少一次返站补给",
+    "自主安排目标顺序并安全返航"
+  ],
+  "target_ids": [
+    "T02",
+    "T03",
+    "T06"
+  ],
+  "available_from_start": [
+    "T02",
+    "T03",
+    "T06"
+  ],
+  "delivery_points_each": {
+    "T02": 20,
+    "T03": 20,
+    "T06": 20
+  },
+  "time_limit_s": 1200,
+  "ceiling_world_z_m": 36,
+  "max_speed_mps": 4,
+  "payload_capacity": 2,
+  "initial_payload": 2,
+  "refill_allowed": true,
+  "refill_hold_s": 20,
+  "sortie_airborne_budget_s": 420,
+  "delivery_hover_s": 4,
+  "horizontal_tolerance_cap_m": 0.8,
+  "allowed_pads": {
+    "T02": [
+      "primary",
+      "alternate"
+    ],
+    "T03": [
+      "primary",
+      "alternate"
+    ],
+    "T06": [
+      "primary",
+      "alternate"
+    ]
+  },
+  "target_deadline_s": {
+    "T02": 1050,
+    "T03": 1050,
+    "T06": 1050
+  },
+  "dispatch_events": [],
+  "learning": [
+    "三维绕障",
+    "断路重规划",
+    "载荷与架次调度",
+    "备选区选择"
+  ]
+}
