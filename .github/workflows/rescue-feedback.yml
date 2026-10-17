@@ -1,0 +1,23 @@
+name: Rescue Reference Feedback
+on:
+  pull_request:
+    branches: [develop]
+    paths: ['reference/rescue_feedback/**', '.github/workflows/rescue-feedback.yml']
+  push:
+    branches: [develop]
+    paths: ['reference/rescue_feedback/**', '.github/workflows/rescue-feedback.yml']
+permissions:
+  contents: read
+jobs:
+  controller-contract:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: python -m unittest discover -s reference/rescue_feedback/tests -v
+      - run: python -m compileall -q reference/rescue_feedback
+      - run: bash -n reference/rescue_feedback/reset_feedback.sh reference/rescue_feedback/run_level.sh reference/rescue_feedback/view.sh
